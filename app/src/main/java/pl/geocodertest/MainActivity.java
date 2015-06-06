@@ -2,6 +2,7 @@ package pl.geocodertest;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,28 +14,29 @@ import pl.gsonjson.GsonGeocoderTask;
 
 
 public class MainActivity extends ActionBarActivity {
+    public static final String TAG = MainActivity.class.getSimpleName();
     EditText edit;
     TextView tview;
     private static final String BASE = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-    public static final String API_KEY = Data.GEOCODING_API_KEY;
+    public static final String API_KEY = "AIzaSyCsedH9yyiq2sBTjnIS_SUw0OVU2gS1e_w/";
     public static final String LANGUAGE_SUFFIX = "&-PL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tview = (TextView)findViewById(R.id.latlng);
-        edit = (EditText)findViewById(R.id.input);
-        Button btn = (Button)findViewById(R.id.button);
+        tview = (TextView) findViewById(R.id.latlng);
+        edit = (EditText) findViewById(R.id.input);
+        Button btn = (Button) findViewById(R.id.button);
+        edit.setText("Biszcza,339");
         final MainActivity context = this;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String txt= edit.getText().toString();
+                final String txt = edit.getText().toString();
                 new CoordinatesTask(txt,context).execute();
-                //Gson's parser not working yet
-//                String url =  BASE + txt + LANGUAGE_SUFFIX + "&key=" + API_KEY;
-//                new GsonGeocoderTask(context,url).execute();
+                String url = BASE + txt + LANGUAGE_SUFFIX + "&key=" + API_KEY;
+                new GsonGeocoderTask(context, url).execute();
             }
         });
     }

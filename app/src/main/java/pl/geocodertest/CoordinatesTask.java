@@ -38,8 +38,8 @@ import java.util.List;
 public class CoordinatesTask extends AsyncTask<Void, Void, String> {
 
     private static final String BASE = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-    public static final String API_KEY = Data.GEOCODING_API_KEY;
-    public static final String LANGUAGE_SUFFIX = "&-PL";
+    private static final String API_KEY = "AIzaSyCsedH9yyiq2sBTjnIS_SUw0OVU2gS1e_w";
+    private static final String LANGUAGE_SUFFIX = "&-PL";
 
     public static final String TAG = CoordinatesTask.class.getSimpleName();
     private String full_address;
