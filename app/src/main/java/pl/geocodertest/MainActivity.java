@@ -46,29 +46,27 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 final String txt = edit.getText().toString();
-//                new CoordinatesTask(txt,context).execute();
-//                String url = BASE + txt + LANGUAGE_SUFFIX + "&key=" + API_KEY;
-//                new GsonGeocoderTask(context, url).execute();
-                App.getRestClient().getGeoService().getLatLng(txt, new Callback<ApiResponse>() {
-                    @Override
-                    public void success(ApiResponse apiResponse, Response response) {
-                        Logger.d("success?");
-
-                        final Double lat = apiResponse.getResults().get(0).getGeometry().getLocation().getLat();
-                        final Double lng = apiResponse.getResults().get(0).getGeometry().getLocation().getLng();
-
-                        Logger.d(":(");
-
-                        tview.setText(lat + "," + lng);
-
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        Log.e(TAG, "Error : " + error.getMessage());
-
-                    }
-                });
+                new CoordinatesTask(txt,context).execute();
+//                App.getRestClient().getGeoService().getLatLng(txt, new Callback<ApiResponse>() {
+//                    @Override
+//                    public void success(ApiResponse apiResponse, Response response) {
+//                        Logger.d("success?");
+//
+//                        final Double lat = apiResponse.getResults().get(0).getGeometry().getLocation().getLat();
+//                        final Double lng = apiResponse.getResults().get(0).getGeometry().getLocation().getLng();
+//
+//                        Logger.d(":(");
+//
+//                        tview.setText(lat + "," + lng);
+//
+//                    }
+//
+//                    @Override
+//                    public void failure(RetrofitError error) {
+//                        Log.e(TAG, "Error : " + error.getMessage());
+//
+//                    }
+//                });
 
 
             }
