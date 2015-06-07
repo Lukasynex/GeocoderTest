@@ -9,19 +9,15 @@ import com.google.gson.annotations.SerializedName;
 public class Geometry {
 
     @SerializedName("bounds")
-    @Expose
     private Bounds bounds;
 
     @SerializedName("location")
-    @Expose
     private Location location;
 
     @SerializedName("location_type")
-    @Expose
     private String locationType;
 
     @SerializedName("viewport")
-    @Expose
     private Viewport viewport;
 
     /**

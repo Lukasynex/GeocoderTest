@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * Created by Lukasz Marczak on 2015-06-06.
  */
-@Parcel
 public class GeoBlob {
 
     @SerializedName("results")

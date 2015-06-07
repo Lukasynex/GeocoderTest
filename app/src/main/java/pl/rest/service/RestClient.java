@@ -3,7 +3,7 @@ package pl.rest.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import pl.rest.model.ApiService;
+import pl.rest.model.ApiResponse;
 import pl.rest.model.Constants;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
@@ -19,7 +19,7 @@ public class RestClient
     public RestClient()
     {
         Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")
+                .registerTypeAdapterFactory(new ItemTypeAdapterFactory())
                 .create();
 
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -31,7 +31,7 @@ public class RestClient
         apiService = restAdapter.create(ApiService.class);
     }
 
-    public ApiService getApiService()
+    public ApiService getGeoService()
     {
         return apiService;
     }
